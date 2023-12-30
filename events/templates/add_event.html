@@ -1,0 +1,58 @@
+{% extends "master.html" %}
+
+{% block title %}
+    Add Student
+{% endblock %}
+
+
+{% block content %}
+
+{% include "navbar.html" %}
+
+<h1 class="mt-4 text-center">Add New Task</h1>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card bg-info">
+                <div class="card-body m-4">
+                    <form action="/add_event/" method="POST">
+                        {% csrf_token %} 
+
+
+
+                        <div class="mb-3">
+                            <label for="title">Title</label>
+                            <input name="title" type="text" name="title" id="title" class="form-control" placeholder="Enter Your Event Title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description">Description</label>
+                            <textarea name="description" id="description" rows="5"  class="form-control" placeholder="Enter Your Event Description" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="event_date">Event Date</label>
+                            <input name="event_date" type="date" name="event_date" id="event_date" class="form-control" placeholder="Enter Event Date" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="event_time">Event Time</label>
+                            <input name="event_time" type="time" name="event_time" id="event_time" class="form-control" placeholder="Enter Event Time" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="location_name">Location</label>
+                            <input name="location_name" type="text" name="location_name" id="location_name" class="form-control" placeholder="Enter Your Location" required>
+                        </div>
+
+                        <div class="container text-center mt-4">
+                            <button class="btn btn-primary">Submit</button>
+                        </div>
+                        
+
+                    </form>  
+                     
+                </div>         
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
