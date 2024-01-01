@@ -25,6 +25,7 @@ def add_event(request):
         event_date = request.POST.get("event_date")
         event_time = request.POST.get("event_time")
         location_name = request.POST.get("location_name")
+        slot = request.POST.get("slot")
         
     
 
@@ -35,6 +36,7 @@ def add_event(request):
         s.event_date=event_date
         s.event_time=event_time
         s.location_name=location_name
+        s.slot=slot
         
 
         s.save()
@@ -69,6 +71,8 @@ def do_update_event(request, id):
     event_date = request.POST.get("event_date")
     event_time = request.POST.get("event_time")
     location_name = request.POST.get("location_name")
+    slot = request.POST.get("slot")
+
 
 
     s = Event.objects.get(pk=id)
@@ -77,6 +81,7 @@ def do_update_event(request, id):
     s.event_date=event_date
     s.event_time=event_time
     s.location_name=location_name
+    s.slot=slot
 
     s.save()
     return redirect("/dashboard")

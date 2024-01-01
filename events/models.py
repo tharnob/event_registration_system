@@ -8,6 +8,7 @@ class Event(models.Model):
     event_date = models.DateField()
     event_time = models.TimeField(max_length=150)
     location_name = models.CharField(max_length=150)
+    slot = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
 
 

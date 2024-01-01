@@ -29,11 +29,25 @@
                             <input type="hidden" name="event_id" value="{{ event.id }}">
                             <input type="hidden" name="event_title" value="{{ event.title }}">
                             <input type="hidden" name="user_name" value="{{ user.username }}">
+                            <input type="hidden" name="slot" value="{{ event.slot }}">
+
                             <p class="card-text">Event ID: {{ event.id }}</p>
                             <p class="card-text">User Name: {{ user.username }}</p>
+                            <p class="card-text">Available Slot: {{ event.slot }}</p>
                             <br>
+
+                            {% if event.slot > 0 %}
+                                <button type="submit" class="btn btn-primary">Register</button>
+
+                            {% else %}
                             
-                            <button type="submit" class="btn btn-primary">Register</button>
+                                <p class="btn btn-danger">Sorry, There is no slot for registration!</p>
+
+                            
+                                
+                            {% endif %}
+                            
+                            
                         </form>
                     </div>
                 </div>

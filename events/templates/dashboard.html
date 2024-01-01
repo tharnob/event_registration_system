@@ -39,8 +39,10 @@
                                 <th>Event Date</th>
                                 <th>Event Time</th>
                                 <th>Location</th>
+                                <th>Slots</th>
                                 <th>Date of Creation</th>
                                 {% if user.is_authenticated and user.username == "admin"%}
+                                
                                 <th>Action</th>
                                 {% endif %}
                                 {% if user.is_authenticated and user.username != "admin"%}
@@ -58,6 +60,7 @@
                                     <td>{{ e.event_date }}</td>
                                     <td>{{ e.event_time }}</td>
                                     <td>{{ e.location_name }}</td>
+                                    <td>{{ e.slot }}</td>
                                     <td>{{ e.created_at }}</td>
                                     {% if user.is_authenticated and user.username == "admin"%}
                                     <td>
