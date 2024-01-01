@@ -43,6 +43,10 @@
                                 {% if user.is_authenticated and user.username == "admin"%}
                                 <th>Action</th>
                                 {% endif %}
+                                {% if user.is_authenticated and user.username != "admin"%}
+                                <th>Action</th>
+                                {% endif %}
+
                             </tr>
                         </thead>
                         <tbody>
@@ -61,6 +65,17 @@
                                         <a href="/update-event/{{e.id}}" class="btn btn-success md-sm">Update</a>
                                     </td>
                                     {% endif %}
+
+
+                                    {% if user.is_authenticated and user.username != "admin"%}
+                                    <td>
+
+                                        <a href="/events/dashboard/{{e.id}}" class="btn btn-success md-sm">Register Event</a>
+                                    </td>
+                                    {% endif %}
+
+
+
                                         
                                 </tr>
                             {% endfor %}

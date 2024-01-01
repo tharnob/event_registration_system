@@ -9,10 +9,16 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/dashboard">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/add_event">Add Event</a>
-          </li>
+          {% if user.is_authenticated and user.username == "admin"%}
+            <li class="nav-item">
+              <a class="nav-link" href="/add_event">Add Event</a>
+            </li>
+          {% endif %}
+
           {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="/events/registered_event/">Registered Event</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="/members/logout_user/">Logout</a>
             </li>
