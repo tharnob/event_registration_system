@@ -3,9 +3,102 @@ from django.http import HttpResponse
 from django.template import loader
 from .models import RegisteredEvent
 from events.models import Event
+
 from django.views.decorators.csrf import csrf_protect
 
+
+
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.reverse import reverse
+from rest_framework import mixins
+from rest_framework import generics
+from event_registration.serializer import RegSerializer
+
+
+
 # Create your views here.
+
+
+
+
+
+
+
+@api_view(['GET'])
+def api_root(request, format=None):
+    return Response({
+        'Registered Event': reverse('registered-events', request=request, format=format),
+        
+    })
+
+
+
+
+
+class RegEvents(generics.ListCreateAPIView, mixins.ListModelMixin,
+                  mixins.CreateModelMixin,
+                  generics.GenericAPIView):
+    queryset = RegisteredEvent.objects.all()
+    serializer_class = RegSerializer
+
+
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+    
+
+
+
+class RegDetail(generics.RetrieveUpdateDestroyAPIView, mixins.RetrieveModelMixin,
+                    mixins.UpdateModelMixin,
+                    mixins.DestroyModelMixin,
+                    generics.GenericAPIView):
+    queryset = RegisteredEvent.objects.all()
+    serializer_class = RegSerializer
+    
+
+
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
+
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def event_registration_page(request, id):
     reg_event = RegisteredEvent.objects.all().values()
