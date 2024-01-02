@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'members',
     'event_registration',
     'rest_framework',
+    'drf_yasg',
+
     
 ]
 
