@@ -21,7 +21,7 @@ from events.serializer import EventSerializer
 
 
 
-
+# List of all events and Details of a specific event
 
 @api_view(['GET'])
 def api_root(request, format=None):
